@@ -1,3 +1,10 @@
+""" 
+Problem name:Bingo Candies
+Problem Number :2208
+Difficulty : A (Easy)
+"""
+
+
 # take the first input as the total test cases
 # take the second input as the total number of size of the board
 # take the input of the total candies "as per the size of the board"
