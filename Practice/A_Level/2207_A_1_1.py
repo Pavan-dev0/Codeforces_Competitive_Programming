@@ -1,40 +1,21 @@
-import sys
-
 def solve():
-    try:
-        line = sys.stdin.readline()
-        if not line:
-            return
-        t = int(line.strip())
-    except ValueError:
-        return
-
+    t = int(input())
     for _ in range(t):
-        n = int(sys.stdin.readline().strip())
-        s = list(sys.stdin.readline().strip())
+        n = int(input())
+        s = input().strip()
         
-        first_1 = -1
-        last_1 = -1
-        for i in range(n):
+        blocks = 0
+        max_block = 0
+        i = 0
+        while i < n:
             if s[i] == '1':
-                if first_1 == -1:
-                    first_1 = i
-                last_1 = i
-        
-        if first_1 == -1:
-            print(0, 0)
-            continue
-            
-        max_ones = (last_1 - first_1 + 1)
-        
-        min_ones = 0
-        if s.count('1') > 0:
-            if s.count('1') == 1:
-                min_ones = 1
+                length = 0
+                while i < n and s[i] == '1':   # FIXED: check '1' not 'l'
+                    length += 1
+                    i += 1
+                blocks += 1
+                max_block = max(max_block, length)
             else:
-                min_ones = 2
+                i += 1
         
-        print(f"{min_ones} {max_ones}")
-
-if __name__ == '__main__':
-    solve()
+        print(blocks, max_block)
